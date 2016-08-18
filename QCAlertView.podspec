@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "QCAlertView"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "Alert View For iOS"
   s.homepage     = "https://github.com/Joe0708/QCAlertView"
   s.license      = "Copyright (c) 2016年 Joe. All rights reserved."
