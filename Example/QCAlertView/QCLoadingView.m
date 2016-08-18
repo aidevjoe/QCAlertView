@@ -21,7 +21,7 @@
     static QCLoadingView *shareInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        shareInstance                          = [[QCLoadingView alloc] init];
+        shareInstance = [[QCLoadingView alloc] init];
     });
     return shareInstance;
 }
@@ -31,8 +31,8 @@
 }
 
 + (instancetype)showLoadingViewWithContentView:(UIView *)contentView{
-    QCLoadingView *loadingView            = [QCLoadingView shareInstance];
-    loadingView.contentView                  = contentView;
+    QCLoadingView *loadingView = [QCLoadingView shareInstance];
+    loadingView.contentView = contentView;
     [loadingView show];
     return loadingView;
 }
@@ -42,8 +42,7 @@
 }
 
 - (void)setContentView:(UIView *)contentView {
-    
-    self.frame                             = contentView.bounds;
+    self.frame = contentView.bounds;
     [super setContentView:contentView];
 }
 
@@ -51,7 +50,6 @@
 - (void)show {
     
     if (self.contentView) {
-        
         [self.contentView addSubview:self];
         
         [self createBlackView];
@@ -60,30 +58,28 @@
 }
 
 - (void)hide {
-    
+
     if (self.contentView) {
-        
         [self removeViews];
     }
 }
 
 - (void)createBlackView {
     
-    self.blackView                         = [[UIView alloc] initWithFrame:self.contentView.bounds];
-    self.blackView.backgroundColor         = [UIColor colorWithWhite:0.000 alpha:0];
+    self.blackView = [[UIView alloc] initWithFrame:self.contentView.bounds];
+    self.blackView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0];
     [self addSubview:self.blackView];
     
     [UIView animateWithDuration:0.3f animations:^{
-        
-        self.blackView.backgroundColor     = [UIColor colorWithWhite:0.000 alpha:0.25];
+        self.blackView.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.25];
     }];
 }
 
 - (void)createMessageView {
     
-    self.loadingContentView                       = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
-    self.loadingContentView.backgroundColor       = [[UIColor blackColor] colorWithAlphaComponent:.5];
-    self.loadingContentView.center                = CGPointMake(CGRectGetWidth(self.contentView.bounds) / 2.f, CGRectGetHeight(self.contentView.bounds) / 2.f);
+    self.loadingContentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    self.loadingContentView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.5];
+    self.loadingContentView.center = CGPointMake(CGRectGetWidth(self.contentView.bounds) / 2.f, CGRectGetHeight(self.contentView.bounds) / 2.f);
     self.loadingContentView.layer.cornerRadius = 5;
     self.loadingContentView.layer.masksToBounds = YES;
     self.loadingContentView.alpha = 0;
@@ -106,10 +102,10 @@
 - (void)removeViews {
     
     [UIView animateWithDuration:0.2f animations:^{
-        
-        self.blackView.alpha                   = 0.f;
+        self.blackView.alpha = 0.f;
         
     } completion:^(BOOL finished) {
+        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         [self removeFromSuperview];
     }];
 }

@@ -8,8 +8,6 @@
 
 #import "QCButtonsAlertView.h"
 
-#define FontWithSize(fontSize) [UIFont fontWithName:@"Heiti SC" size:(fontSize)]
-#define kColor [UIColor colorWithWhite:0.725 alpha:1.000]
 
 @interface QCButtonsAlertView ()
 
@@ -22,14 +20,6 @@
 
 @implementation QCButtonsAlertView
 
-+ (UIView *)lineViewWithFrame:(CGRect)frame color:(UIColor *)color {
-    
-    UIView *line = [[UIView alloc] initWithFrame:frame];
-    line.backgroundColor = color;
-    
-    return line;
-}
-
 + (instancetype)shareInstance{
     static QCButtonsAlertView *shareInstance  = nil;
     static dispatch_once_t onceToken;
@@ -39,6 +29,15 @@
     
     return shareInstance;
 }
+
++ (UIView *)lineViewWithFrame:(CGRect)frame color:(UIColor *)color {
+    
+    UIView *line = [[UIView alloc] initWithFrame:frame];
+    line.backgroundColor = color;
+    
+    return line;
+}
+
 
 + (instancetype)showAlertWithMessage:(NSString *)message{
     return [QCButtonsAlertView showAlertWithContentView:[[[UIApplication sharedApplication] delegate] window] andMessage:message];
@@ -136,14 +135,11 @@
     [textLabel sizeToFit];
     
     // 创建信息窗体view
-    self.messageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 240, textLabel.bounds.size.height + 100)];
+    self.messageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 240, textLabel.bounds.size.height + 80)];
     self.messageView.backgroundColor = [UIColor whiteColor];
     self.messageView.layer.cornerRadius = 10.f;
     self.messageView.center = CGPointMake(CGRectGetWidth(self.contentView.bounds) / 2.f, CGRectGetHeight(self.contentView.bounds) / 2.f);
-    textLabel.center = CGPointMake(CGRectGetWidth(self.messageView.bounds) / 2.f, 0);
-    CGRect newFrame = textLabel.frame;
-    newFrame.origin.y = 30;
-    textLabel.frame = newFrame;
+    textLabel.center = CGPointMake(CGRectGetWidth(self.messageView.bounds) * .5f,  (CGRectGetHeight(self.messageView.bounds) - 40) * .5f);
     self.messageView.alpha = 0.f;
     [self.messageView addSubview:textLabel];
     [self addSubview:self.messageView];
@@ -223,6 +219,7 @@
         self.messageView.transform = CGAffineTransformMakeScale(0.75f, 0.75f);
         
     } completion:^(BOOL finished) {
+        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         [self removeFromSuperview];
     }];
 }
@@ -233,7 +230,7 @@
         [self.delegate alertView:self clickAtIndex:button.tag data:nil];
     }
     
-    !self.alertViewblock ? : self.alertViewblock(self, button.tag);
+    !self.alertViewblock ? : self.alertViewblock(button.tag);
     
     [self hide];
 }

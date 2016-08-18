@@ -10,6 +10,7 @@
 #import "QCMessageAlertView.h"
 #import "QCButtonsAlertView.h"
 #import "QCLoadingView.h"
+#import "QCSheetView.h"
 
 @interface ViewController ()
 
@@ -23,16 +24,19 @@
 }
 
 - (IBAction)showMessageAlertView {
+    //QCMessageAlertView
     [QCMessageAlertView showAlertWithMessage:@"Hello world !"];
 }
 
 - (IBAction)showButtonsAlertView {
-    [QCButtonsAlertView showAlertWithContentView:self.view andMessage:@"Sure to exit?" andButtonsTitle:@[@"Yes", @"No"] alertViewblock:^(QCAlertView *view, NSInteger tag) {
+    //QCButtonsAlertView
+    [QCButtonsAlertView showAlertWithContentView:self.view andMessage:@"Sure to exit?" andButtonsTitle:@[@"Yes", @"No"] alertViewblock:^(NSInteger tag) {
         NSLog(@"%li", tag);
     }];
 }
 
 - (IBAction)showLoadingView {
+    //QCButtonsAlertView
     [QCLoadingView showLoadingView];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -40,4 +44,10 @@
     });
 }
 
+- (IBAction)showSheetView{
+    //QCSheetView
+    [QCSheetView showSheetViewWithMessage:@"确定退出登录吗?." andButtonsTitle:@[@"换个账号", @"退出"] alertViewblock:^(NSInteger tag) {
+        NSLog(@"%li", tag);
+    }];
+}
 @end

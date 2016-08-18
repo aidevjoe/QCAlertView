@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#define FontWithSize(fontSize) [UIFont fontWithName:@"Heiti SC" size:(fontSize)]
+#define kColor [UIColor colorWithWhite:0.725 alpha:1.000]
+#define kScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define kScreenHeight [[UIScreen mainScreen] bounds].size.height
+
 @class QCAlertView;
 
 @protocol QCAlertViewDelegate <NSObject>
@@ -23,14 +28,47 @@
  */
 - (void)alertView:(QCAlertView *)alertView clickAtIndex:(NSInteger)index data:(id)data;
 
+/**
+ *  alertView 即将显示
+ *
+ *  @param alertView alertView
+ */
+- (void)alertViewWillShow:(QCAlertView *)alertView;
+
+/**
+ *  alertView 完全显示
+ *
+ *  @param alertView alertView
+ */
+- (void)alertViewDidShow:(QCAlertView *)alertView;
+
+/**
+ *  alertView 即将隐藏
+ *
+ *  @param alertView alertView
+ */
+- (void)alertViewWillDismiss:(QCAlertView *)alertView;
+
+/**
+ *  alertView 完成隐藏
+ *
+ *  @param alertView alertView
+ */
+- (void)alertViewDidDismiss:(QCAlertView *)alertView;
+
 @end
 
 
 
 /**
- *  block 回调事件
+ *  alertView 点击回调
  */
-typedef void(^alertViewClickOption)(QCAlertView *view, NSInteger tag);
+typedef void(^alertViewClickOption)(NSInteger tag);
+
+/**
+ *  alertView 完全隐藏回调
+ */
+typedef void(^alertViewDidDismiss)();
 
 
 @interface QCAlertView : UIView

@@ -38,11 +38,20 @@
                                     <action selector="showLoadingView" destination="BYZ-38-t0r" eventType="touchUpInside" id="FSK-Dy-2io"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iK3-sI-R5G">
+                                <rect key="frame" x="241" y="339" width="119" height="30"/>
+                                <state key="normal" title="Show Sheet View"/>
+                                <connections>
+                                    <action selector="showSheetView" destination="BYZ-38-t0r" eventType="touchUpInside" id="YfU-NP-x1n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="iRE-H1-un4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3oD-K2-xDH"/>
                             <constraint firstItem="IdI-sb-IlL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="41W-Ca-2j1"/>
+                            <constraint firstItem="iK3-sI-R5G" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F1Y-4Y-hXr"/>
+                            <constraint firstItem="iK3-sI-R5G" firstAttribute="top" secondItem="IdI-sb-IlL" secondAttribute="bottom" constant="48" id="Jwy-Ad-cCj"/>
                             <constraint firstItem="IdI-sb-IlL" firstAttribute="top" secondItem="xDX-1L-zoL" secondAttribute="bottom" constant="49" id="PiE-Ns-aFa"/>
                             <constraint firstItem="xDX-1L-zoL" firstAttribute="top" secondItem="iRE-H1-un4" secondAttribute="bottom" constant="55" id="fIt-3I-7Bd"/>
                             <constraint firstItem="xDX-1L-zoL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jHp-fe-UHv"/>
@@ -52,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="409" y="429"/>
+            <point key="canvasLocation" x="658" y="404"/>
         </scene>
     </scenes>
 </document>

@@ -18,6 +18,8 @@
 		D87F4C571D64336B00695349 /* QCButtonsAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F4C511D64336B00695349 /* QCButtonsAlertView.m */; };
 		D87F4C581D64336B00695349 /* QCLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F4C531D64336B00695349 /* QCLoadingView.m */; };
 		D87F4C591D64336B00695349 /* QCMessageAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F4C551D64336B00695349 /* QCMessageAlertView.m */; };
+		D8E301A21D653F06002731EF /* QCSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E301A11D653F06002731EF /* QCSheetView.m */; };
+		D8E301A51D65743B002731EF /* NSString+StringSize.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E301A41D65743B002731EF /* NSString+StringSize.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,10 @@
 		D87F4C531D64336B00695349 /* QCLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCLoadingView.m; sourceTree = "<group>"; };
 		D87F4C541D64336B00695349 /* QCMessageAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCMessageAlertView.h; sourceTree = "<group>"; };
 		D87F4C551D64336B00695349 /* QCMessageAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCMessageAlertView.m; sourceTree = "<group>"; };
+		D8E301A01D653F06002731EF /* QCSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCSheetView.h; sourceTree = "<group>"; };
+		D8E301A11D653F06002731EF /* QCSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCSheetView.m; sourceTree = "<group>"; };
+		D8E301A31D65743B002731EF /* NSString+StringSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringSize.h"; sourceTree = "<group>"; };
+		D8E301A41D65743B002731EF /* NSString+StringSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringSize.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,31 +80,15 @@
 				D87F4C4D1D64336B00695349 /* QCAlertView */,
 				D87F4C391D64335E00695349 /* AppDelegate.h */,
 				D87F4C3A1D64335E00695349 /* AppDelegate.m */,
+				D87F4C441D64335E00695349 /* ViewController.h */,
+				D87F4C451D64335E00695349 /* ViewController.m */,
 				D87F4C3B1D64335E00695349 /* Assets.xcassets */,
 				D87F4C3C1D64335E00695349 /* LaunchScreen.storyboard */,
 				D87F4C3E1D64335E00695349 /* Main.storyboard */,
 				D87F4C401D64335E00695349 /* Info.plist */,
 				D87F4C411D64335E00695349 /* main.m */,
-				D87F4C421D64335E00695349 /* pop */,
-				D87F4C441D64335E00695349 /* ViewController.h */,
-				D87F4C451D64335E00695349 /* ViewController.m */,
 			);
 			path = Example;
-			sourceTree = "<group>";
-		};
-		D87F4C421D64335E00695349 /* pop */ = {
-			isa = PBXGroup;
-			children = (
-				D87F4C431D64335E00695349 /* WebCore */,
-			);
-			path = pop;
-			sourceTree = "<group>";
-		};
-		D87F4C431D64335E00695349 /* WebCore */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = WebCore;
 			sourceTree = "<group>";
 		};
 		D87F4C4D1D64336B00695349 /* QCAlertView */ = {
@@ -112,6 +102,10 @@
 				D87F4C531D64336B00695349 /* QCLoadingView.m */,
 				D87F4C541D64336B00695349 /* QCMessageAlertView.h */,
 				D87F4C551D64336B00695349 /* QCMessageAlertView.m */,
+				D8E301A01D653F06002731EF /* QCSheetView.h */,
+				D8E301A11D653F06002731EF /* QCSheetView.m */,
+				D8E301A31D65743B002731EF /* NSString+StringSize.h */,
+				D8E301A41D65743B002731EF /* NSString+StringSize.m */,
 			);
 			path = QCAlertView;
 			sourceTree = "<group>";
@@ -187,10 +181,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8E301A21D653F06002731EF /* QCSheetView.m in Sources */,
 				D87F4C4C1D64335E00695349 /* ViewController.m in Sources */,
 				D87F4C581D64336B00695349 /* QCLoadingView.m in Sources */,
 				D87F4C4B1D64335E00695349 /* main.m in Sources */,
 				D87F4C461D64335E00695349 /* AppDelegate.m in Sources */,
+				D8E301A51D65743B002731EF /* NSString+StringSize.m in Sources */,
 				D87F4C561D64336B00695349 /* QCAlertView.m in Sources */,
 				D87F4C591D64336B00695349 /* QCMessageAlertView.m in Sources */,
 				D87F4C571D64336B00695349 /* QCButtonsAlertView.m in Sources */,

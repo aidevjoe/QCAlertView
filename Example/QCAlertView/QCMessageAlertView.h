@@ -29,4 +29,13 @@
  */
 + (instancetype)showAlertWithMessage:(NSString *)message;
 
+/**
+ *  显示 AlertView
+ *
+ *  @param alertViewDidDismiss 隐藏回调
+ *
+ *  @return QCMessageAlertView
+ */
++ (instancetype)showAlertWithMessage:(NSString *)message Complete:(alertViewDidDismiss)alertViewDidDismiss;
+
 @end
