@@ -1,7 +1,7 @@
 # QCAlertView
 ---
 
-### QCAlertView 是一个提示框组件,类似系统的 AlertView
+### QCAlertView 是一个提示框组件,类似系统的 AlertView、SheetView
 
 
 ---
@@ -36,3 +36,11 @@ Gif 演示
     
      //QCButtonsAlertView
     [QCLoadingView showLoadingView];
+    
+    
+    
+
+    //QCSheetView
+    [QCSheetView showSheetViewWithMessage:@"确定退出登录吗?." andButtonsTitle:@[@"换个账号", @"退出"] alertViewblock:^(NSInteger tag) {
+        NSLog(@"%li", tag);
+    }];
