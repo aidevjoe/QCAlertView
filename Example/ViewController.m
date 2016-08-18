@@ -46,8 +46,8 @@
 
 - (IBAction)showSheetView{
     //QCSheetView
-    [QCSheetView showSheetViewWithMessage:@"确定退出登录吗?." andButtonsTitle:@[@"换个账号", @"退出"] alertViewblock:^(NSInteger tag) {
-        NSLog(@"%li", tag);
+    [QCSheetView showSheetViewWithMessage:@"退出" destructiveButtonTitle:@"是的" otherButtonTitles:@[@"不是", @"取消"] alertViewblock:^(NSInteger tag) {
+        NSLog(@"%li",tag);
     }];
 }
 @end

@@ -17,16 +17,32 @@
 @interface QCSheetView () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UIView  *blackView;
-//@property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, copy) NSString *destructiveButtonTitle;
 
 @end
 
 @implementation QCSheetView
 
++ (instancetype)showSheetViewWithButtonsTitle:(NSArray *)buttonsTitle alertViewblock:(alertViewClickOption)alertViewblock{
+    return [self showSheetViewWithMessage:nil andButtonsTitle:buttonsTitle alertViewblock:alertViewblock];
+}
+
 + (instancetype)showSheetViewWithMessage:(NSString *)message andButtonsTitle:(NSArray *)buttonsTitle alertViewblock:(alertViewClickOption)alertViewblock{
+    return [QCSheetView showSheetViewWithMessage:message destructiveButtonTitle:nil otherButtonTitles:buttonsTitle alertViewblock:alertViewblock];
+}
+
++ (instancetype)showSheetViewWithMessage:(NSString *)message destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles alertViewblock:(alertViewClickOption)alertViewblock{
+    
     QCSheetView *sheetView = [QCSheetView new];
-    sheetView.buttonsTitle = buttonsTitle;
+    
+    NSMutableArray *ButtonTitles = [NSMutableArray arrayWithArray:otherButtonTitles];
+    if (destructiveButtonTitle.length) {
+        [ButtonTitles insertObject:destructiveButtonTitle atIndex:0];
+        sheetView.destructiveButtonTitle = destructiveButtonTitle;
+    }
+    
+    sheetView.buttonsTitle = ButtonTitles;
     sheetView.contentView = [[[UIApplication sharedApplication] delegate] window];
     sheetView.message = message;
     sheetView.alertViewblock = alertViewblock;
@@ -44,7 +60,6 @@
     
     if (self.contentView) {
         [self.contentView addSubview:self];
-        
         [self createBlackView];
         [self createTableView];
     }
@@ -61,12 +76,11 @@
 - (void)createBlackView {
     
     self.blackView = [[UIView alloc] initWithFrame:self.contentView.bounds];
-    self.blackView.backgroundColor = [UIColor blackColor];
-    self.blackView.alpha = 0;
+    self.blackView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0];
     [self addSubview:self.blackView];
     
     [UIView animateWithDuration:0.3f animations:^{
-        self.blackView.alpha = 0.25f;
+        self.blackView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
     }];
 }
 
@@ -155,7 +169,8 @@
     }
     
     cell.textLabel.text = indexPath.section ? @"取消" : self.buttonsTitle[indexPath.row];
-    cell.textLabel.textColor = !indexPath.section && !indexPath.row ? [UIColor redColor] : [UIColor blackColor];
+    
+    cell.textLabel.textColor = !indexPath.section && !indexPath.row && self.destructiveButtonTitle.length? [UIColor redColor] : [UIColor blackColor];
     
     return cell;
 }
@@ -166,8 +181,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSUInteger index = indexPath.section ? 0 : indexPath.row + 1;
-    !self.alertViewblock ? : self.alertViewblock(index);
+    if (!indexPath.section) {
+        NSUInteger index = indexPath.row + 1;
+        !self.alertViewblock ? : self.alertViewblock(index);
+    }
     [self hide];
 }
 
